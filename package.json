@@ -1,0 +1,98 @@
+{
+  "name": "backoffice",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "/",
+  "dependencies": {
+    "@babel/preset-flow": "^7.18.6",
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.4.9",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-regular-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.7",
+    "@react-navigation/web": "^1.0.0-alpha.9",
+    "@reduxjs/toolkit": "^1.9.2",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.27.2",
+    "cdbreact": "^1.5.5",
+    "framer-motion": "^6.3.6",
+    "i18next": "^22.1.4",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-i18next": "^12.1.4",
+    "react-icons": "^4.7.1",
+    "react-native-web": "^0.18.12",
+    "react-redux": "^8.0.5",
+    "react-responsive": "^9.0.2",
+    "react-router-dom": "^6.8.0",
+    "react-scripts": "5.0.1",
+    "react-toastify": "^9.1.1",
+    "react-transition-group": "^4.4.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.2",
+    "styled-components": "^5.3.6",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "start:uat": "sh -ac '. .env.uat.local; react-app-rewired start'",
+    "start:stg": "sh -ac '. .env.stg.local; react-app-rewired start'",
+    "start:prd": "sh -ac '. .env.prd.local; react-app-rewired start'",
+    "build": "react-app-rewired build",
+    "build:uat": "sh -ac '. .env.uat.local; react-app-rewired build'",
+    "build:stg": "sh -ac '. .env.stg.local; react-app-rewired build'",
+    "build:prd": "sh -ac '. .env.prd.local; react-app-rewired build'",
+    "test": "jest --watchAll --config=jestconfig.json",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "assert": "^2.0.0",
+    "babel-jest": "^28.1.2",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "jest": "^28.1.2",
+    "os-browserify": "^0.3.0",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "react-test-renderer": "^18.2.0",
+    "redux-devtools": "^3.7.0",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    }
+  }
+}

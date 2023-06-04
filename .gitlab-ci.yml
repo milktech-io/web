@@ -1,0 +1,80 @@
+variables:
+    APP_NAME: referidos
+    DIST_FOLDER: build
+    SYSTEM: eon
+  
+include:
+  - remote: https://templates-gitlab-ci.s3.amazonaws.com/.installation-js.yml
+  - remote: https://templates-gitlab-ci.s3.amazonaws.com/.prepare-environment.yml
+  - remote: https://templates-gitlab-ci.s3.amazonaws.com/.sonarqube.yml
+  - remote: https://templates-gitlab-ci.s3.amazonaws.com/.build-js.yml
+  - remote: https://templates-gitlab-ci.s3.amazonaws.com/.deploy-js.yml
+  - remote: https://templates-gitlab-ci.s3.amazonaws.com/.cleanup.yml
+
+stages:
+  - preinstall
+  - prepare
+  - install
+  - test
+  - sonarqube
+  - build
+  - deploy
+  - cleanup
+  
+preinstall:
+  stage: preinstall
+  script: echo "Hello developer, have a nice day !!!"
+  except:
+    - uat
+    - stg
+    - prd
+  
+prepare:
+  stage: prepare
+  image: bitnami/git
+  extends: .PrepareEnvs
+
+install:
+  stage: install
+  extends: .Installation
+  dependencies:
+    - prepare
+  
+# testing:
+#   stage: test
+#   image: $CONTAINER_JS
+#   script:
+#     - yarn test
+#   dependencies:
+#     - install
+#   only:
+#     - prd
+
+code_review:
+  stage: sonarqube
+  extends: .SonarQube
+
+building:
+  stage: build
+  dependencies:
+    - install
+  extends: .Building
+  environment:
+    name: $CI_COMMIT_BRANCH
+
+deployment:
+  stage: deploy
+  dependencies:
+    - building
+  extends: .Deployment
+  environment:
+    name: $CI_COMMIT_BRANCH
+
+cleanup:
+  stage: cleanup
+  extends: .CleanUp
+  only:
+    - uat
+    - stg
+    - prd
+    
